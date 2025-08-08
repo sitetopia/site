@@ -4,62 +4,179 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="jmoW5D4IDt93IECcOwlRQ2NYLf0m7NL7fwuLSt2rMR4" />
-  <meta name="description" content="Sitetopia offers affordable websites for small businesses, shopkeepers, and local merchants starting at just ₹499. Get fast, low-maintenance, ad-supported sites with free or paid domain options." />
-  <meta name="keywords" content="affordable website, small business website, free domain hosting, GitHub websites India, local business website, ₹499 website, sitetopia" />
+  <meta name="description" content="Sitetopia offers affordable, professional websites for small businesses and local merchants. Plans starting at ₹499 with responsive design, animations, and more." />
+  <meta name="keywords" content="affordable website, small business website, GitHub hosting, responsive design, website plans, sitetopia" />
   <meta name="author" content="Sitetopia" />
-  <title>Sitetopia – Affordable Websites for Local Businesses</title>
+  <title>Sitetopia – Pro Websites for Local Businesses</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9fafb;
-      color: #333;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(-45deg, #1e1e1e, #670000, #008cff, #330000);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
     }
-    header, section {
-      padding: 40px 20px;
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
     }
-    header {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: white;
+
+    header embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+      z-index: 0;
     }
-    .cta {
-      margin-top: 20px;
+
+    header .overlay {
+      position: relative;
+      z-index: 1;
     }
+
+    header h1 {
+      font-size: 3rem;
+      color: #ffffff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    #login {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    #login video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .cta a {
-      background-color: #ff6600;
-      color: white;
+      background: #a30000;
+      color: #fff;
       padding: 12px 24px;
       text-decoration: none;
       border-radius: 6px;
       font-weight: bold;
     }
+
+    .ad-banner {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    @media (max-width: 768px) {
+      .ad-banner {
+        position: static;
+        margin: 20px auto;
+        display: block;
+      }
+      header { height: 40vh; }
+      #login { position: static; margin: 20px auto; }
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
     .plans {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
+
     .plan {
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border-radius: 12px;
       padding: 24px;
-      width: 300px;
-      text-align: left;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      width: 320px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
+
     .plan h3 {
       margin-top: 0;
-      color: #0077cc;
+      font-size: 1.5rem;
     }
+
     .plan ul {
-      padding-left: 20px;
+      text-align: left;
+      margin-bottom: 16px;
     }
+
+    .plan .buy-btn {
+      display: inline-block;
+      background: #ff4500;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    #portfolio h2 { color: #fff; }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      width: 280px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+    }
+
+    .gallery-item a {
+      display: block;
+      padding: 12px;
+      text-decoration: none;
+      color: #00d0ff;
+      font-weight: bold;
+      text-align: center;
+    }
+
     footer {
-      background-color: #222;
-      color: white;
+      background: #000;
+      color: #fff;
       padding: 20px;
       text-align: center;
     }
@@ -67,27 +184,32 @@
 </head>
 <body>
   <header>
-    <h1>Welcome to Sitetopia</h1>
-    <p>We build budget-friendly websites for small businesses across India</p>
-    <div class="cta">
-      <a href="#plans">Explore Plans</a>
+    <embed src="images/Black%20and%20White%20Modern%20Tech%20Company%20Presentation.pdf" type="application/pdf">
+    <div class="overlay">
+      <h1>Welcome to Sitetopia</h1>
+      <p>Professional, Responsive, and Affordable Websites</p>
+      <div class="cta"><a href="#plans">See Plans</a></div>
+    </div>
+    <div id="login">
+      <video src="videos/Monochrome%20Simple%20Business%20Podcast%20Cover.mp4" autoplay muted loop></video>
+    </div>
+    <div class="ad-banner">
+      <script type="text/javascript">
+        atOptions = {
+          'key': '1a00a3639ea540626d1509e0c15ebba9',
+          'format': 'iframe',
+          'height': 60,
+          'width': 468,
+          'params': {}
+        };
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/1a00a3639ea540626d1509e0c15ebba9/invoke.js"></script>
     </div>
   </header>
 
   <section>
-    <h2>🚀 Your Business Online</h2>
-    <p>Whether you're a shop owner, tutor, or small business—go online fast with Sitetopia.</p>
-  </section>
-
-  <section>
-    <h2>Why Sitetopia?</h2>
-    <ul style="text-align: left; max-width: 800px; margin: auto;">
-      <li>✅ Starting from just ₹499</li>
-      <li>✅ Fast delivery within 1–2 weeks</li>
-      <li>✅ Ad integration to help you earn</li>
-      <li>✅ Transparent pricing and no hidden charges</li>
-      <li>✅ Free hosting on GitHub, paid domains when you're ready</li>
-    </ul>
+    <h2>🚀 Get Your Business Online</h2>
+    <p>From ₹499 with free GitHub hosting or upgrade anytime to a paid domain.</p>
   </section>
 
   <section id="plans">
@@ -97,45 +219,51 @@
         <h3>Plan 1 – ₹2000</h3>
         <ul>
           <li>Ad-supported site – earn money</li>
-          <li>Custom theme and features</li>
-          <li>Free domain with occasional downtime</li>
-          <li>Delivery in 2–3 weeks</li>
-          <li>Update charges: ₹250–₹500 per week or month</li>
+          <li>Custom theme & features</li>
+          <li>Free domain (downtime possible)</li>
+          <li>Delivery: 2–3 weeks</li>
+          <li>Updates: ₹250–₹500/week or month</li>
         </ul>
+        <a class="buy-btn" href="#">Buy Now</a>
       </div>
       <div class="plan">
         <h3>Plan 2 – ₹5000</h3>
         <ul>
-          <li>No downtime – .com/.in domain</li>
-          <li>Custom features for your business</li>
-          <li>High-priority customer support</li>
-          <li>Delivery in 1–2 weeks</li>
-          <li>Domain yearly charge: ₹2000–₹3000</li>
-          <li>Update charges apply</li>
+          <li>Paid .com/.in domain (₹2000–₹3000/yr)</li>
+          <li>No downtime</li>
+          <li>Priority support</li>
+          <li>Delivery: 1–2 weeks</li>
+          <li>Weekly/monthly updates</li>
         </ul>
+        <a class="buy-btn" href="#">Buy Now</a>
       </div>
       <div class="plan">
         <h3>Plan 3 – ₹10,000</h3>
         <ul>
-          <li>All of Plan 2 features</li>
-          <li>Delivery partner integration (e.g. Zomato, Zepto)</li>
+          <li>All Plan 2 features</li>
+          <li>Delivery integration (Zomato, Zepto)</li>
           <li>Personal assistant support</li>
           <li>Fastest delivery: 1 week</li>
-          <li>Domain yearly cost: ₹2000–₹3000</li>
-          <li>Weekly update charges</li>
+          <li>Domain cost: ₹2000–₹3000/yr</li>
         </ul>
+        <a class="buy-btn" href="#">Buy Now</a>
       </div>
     </div>
   </section>
 
-  <section>
-    <h2>📞 Get in Touch</h2>
-    <p>Chat with us on WhatsApp: <strong>+91-XXXXXXXXXX</strong></p>
-    <p>Or email: <strong>support@sitetopia.in</strong></p>
+  <section id="portfolio">
+    <h2>🌐 Our Created Websites</h2>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://www.dooshtoons.linkpc.net/assets/preview.png" alt="Sample Site" />
+        <a href="https://www.dooshtoons.linkpc.net/" target="_blank">View Sample</a>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Sitetopia. Designed for India's small businesses.</p>
+    <p>Contact us: WhatsApp +91-XXXXXXXXXX | support@sitetopia.in</p>
+    <p>&copy; 2025 Sitetopia. All Rights Reserved.</p>
   </footer>
 </body>
 </html>
