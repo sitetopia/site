@@ -13,222 +13,107 @@
   <!-- Open Graph / WhatsApp Preview -->
   <meta property="og:title" content="Sitetopia – Pro Websites from ₹499" />
   <meta property="og:description" content="Launch your online presence with Sitetopia. Free domain, responsive design, fast delivery, ads-based income, and plans starting at ₹1999!" />
-  <meta property="og:image" content="https://sitetopia.run.place/images/Colorful%20Abstract%20Fox%20Free%20Logo%20.png" />
+  <meta property="og:image" content="https://sitetopia.run.place/images/Colorful-Abstract-Fox-Free-Logo.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sitetopia.run.place/" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/Colorful Abstract Fox Free Logo .png" />
+  <link rel="icon" type="image/png" href="images/Colorful-Abstract-Fox-Free-Logo.png" />
 
   <title>Sitetopia – Pro Websites for Local Businesses</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Arial', sans-serif;
       background: linear-gradient(-45deg, #0a192f, #0c2344, #102c54, #081d3f);
       background-size: 600% 600%;
       animation: darkBlueBG 20s ease infinite;
       color: #fff;
+      overflow-x: hidden;
     }
+    @keyframes darkBlueBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-    @keyframes darkBlueBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
+    /* Loader */
+    body.loader-active { overflow: hidden; height: 100vh; }
     #loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
+      display: flex; justify-content: center; align-items: center;
+      z-index: 9999; transition: opacity 1s ease;
     }
-
+    #loader.fade-out { opacity: 0; pointer-events: none; }
     #loader video {
-      width: 320px;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 16px;
-      animation: slowFade 5s linear;
+      width: 320px; height: 320px;
+      object-fit: cover; border-radius: 16px;
+      animation: slowFade 3.5s linear;
     }
+    @keyframes slowFade { from { opacity: 0; } to { opacity: 1; } }
+    @media (max-width: 768px) { #loader video { width: 200px; height: 200px; } }
 
-    @keyframes slowFade {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
+    /* Header */
     header {
-      position: relative;
-      height: 70vh;
+      position: relative; 
+      min-height: 50vh;
       background: url('images/banner-converted.jpg') no-repeat center center/cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: 40px 20px;
     }
-
     header::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1;
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1;
     }
-
-    header .overlay {
-      position: relative;
-      z-index: 2;
-      padding: 20px;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      color: #ffffff;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-    }
-
-    .cta {
-      margin-top: 30px;
-    }
-
-    .cta a {
-      background: #005ea3;
-      color: #fff;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-
-    .ad-banner {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 100;
-    }
-
+    header .overlay { position: relative; z-index: 2; max-width: 90%; }
+    header h1 { font-size: 2.5rem; }
+    header p { font-size: 1rem; margin-top: 8px; }
+    .cta { margin-top: 20px; }
+    .cta a { background: #005ea3; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9rem; }
+    .ad-banner { position: absolute; top: 10px; right: 10px; z-index: 2; }
     @media (max-width: 768px) {
-      .ad-banner {
-        position: static;
-        margin: 20px auto;
-        display: block;
-      }
-      header {
-        height: 40vh;
-      }
+      header { min-height: 40vh; padding: 20px 10px; }
+      header h1 { font-size: 1.8rem; }
+      header p { font-size: 0.9rem; }
+      .ad-banner { position: static; margin: 10px auto; }
     }
 
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .plans {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
+    /* Sections */
+    section { padding: 60px 20px; text-align: center; }
+    .plans { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
     .plan {
-      background: rgba(255, 255, 255, 0.05);
-      color: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      width: 320px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.05); color: #fff;
+      border-radius: 12px; padding: 24px; width: 100%; max-width: 320px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3); margin-top: 20px;
     }
+    .plan h3 { font-size: 1.3rem; }
+    .plan ul { font-size: 0.9rem; line-height: 1.4; }
+    .plan .buy-btn { font-size: 0.9rem; }
 
-    .plan h3 {
-      margin-top: 0;
-      font-size: 1.5rem;
-    }
+    /* Portfolio */
+    #portfolio h2 { font-size: 1.8rem; }
+    .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+    .gallery-item { width: 100%; max-width: 280px; }
 
-    .plan ul {
-      text-align: left;
-      margin-bottom: 16px;
-    }
-
-    .plan .buy-btn {
-      display: inline-block;
-      background: #0074D9;
-      color: #fff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-
-    #portfolio h2 { color: #fff; }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .gallery-item {
-      width: 280px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      display: block;
-    }
-
-    .gallery-item a {
-      display: block;
-      padding: 12px;
-      text-decoration: none;
-      color: #00bfff;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    footer {
-      background: #000;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
+    footer { background: #000; color: #fff; padding: 20px; text-align: center; font-size: 0.9rem; }
   </style>
 
   <script>
-    window.onload = () => {
+    document.body.classList.add('loader-active');
+    window.addEventListener('load', () => {
       setTimeout(() => {
-        document.getElementById('loader').style.display = 'none';
-      }, 5000);
-    }
+        const loader = document.getElementById('loader');
+        loader.classList.add('fade-out');
+        setTimeout(() => {
+          loader.style.display = 'none';
+          document.body.classList.remove('loader-active');
+        }, 1000);
+      }, 3500);
+    });
   </script>
 </head>
-
 <body>
   <div id="loader">
-    <video src="videos/Monochrome Simple Business Podcast Cover (2).mp4#t=0,3.5" autoplay muted></video>
+    <video src="videos/Monochrome Simple Business Podcast Cover (2).mp4#t=0,3.5" autoplay muted playsinline></video>
   </div>
 
   <header>
@@ -238,20 +123,12 @@
       <div class="cta"><a href="#plans">See Plans</a></div>
     </div>
     <div class="ad-banner">
-      <script type="text/javascript">
-        atOptions = {
-          'key': '1a00a3639ea540626d1509e0c15ebba9',
-          'format': 'iframe',
-          'height': 60,
-          'width': 468,
-          'params': {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/1a00a3639ea540626d1509e0c15ebba9/invoke.js"></script>
+      <script type="text/javascript">atOptions = { 'key': '1a00a3639ea540626d1509e0c15ebba9', 'format': 'iframe', 'height': 60, 'width': 468, 'params': {} };</script>
+      <script src="//www.highperformanceformat.com/1a00a3639ea540626d1509e0c15ebba9/invoke.js"></script>
     </div>
   </header>
 
-  <!-- 🌊 SVG Wave Effect -->
+  <!-- SVG Wave -->
   <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
     <path fill="#0a192f" fill-opacity="1" d="M0,224L48,202.7C96,181,192,139,288,122.7C384,107,480,117,576,138.7C672,160,768,192,864,202.7C960,213,1056,203,1152,197.3C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
   </svg>
@@ -285,18 +162,7 @@
           <li>Weekly/monthly updates</li>
         </ul>
         <a class="buy-btn" href="#">Buy Now</a>
-      </div>
-      <div class="plan">
-        <h3>Plan 3 – ₹9999</h3>
-        <ul>
-          <li>All features</li>
-          <li>Delivery integration (Zomato, Zepto)</li>
-          <li>Personal assistant support</li>
-          <li>Fastest delivery: 1 week</li>
-          <li>Domain cost: ₹1999–₹2999/yr</li>
-        </ul>
-        <a class="buy-btn" href="#">Buy Now</a>
-      </div>
+      });
     </div>
   </section>
 
