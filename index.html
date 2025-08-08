@@ -31,18 +31,13 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(-45deg,
-        #001F3F,
-        #0074D9,
-        #7FDBFF,
-        #39CCCC,
-        #3E8EDE);
-      background-size: 400% 400%;
-      animation: gradientBG 20s ease infinite;
+      background: linear-gradient(-45deg, #0a192f, #0c2344, #102c54, #081d3f);
+      background-size: 600% 600%;
+      animation: darkBlueBG 20s ease infinite;
       color: #fff;
     }
 
-    @keyframes gradientBG {
+    @keyframes darkBlueBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
@@ -116,7 +111,7 @@
     }
 
     .cta a {
-      background: #0074D9;
+      background: #005ea3;
       color: #fff;
       padding: 12px 24px;
       text-decoration: none;
@@ -137,7 +132,6 @@
         margin: 20px auto;
         display: block;
       }
-
       header {
         height: 40vh;
       }
@@ -177,16 +171,14 @@
 
     .plan .buy-btn {
       display: inline-block;
-      background: #0055aa;
+      background: #0074D9;
       color: #fff;
       padding: 10px 20px;
       text-decoration: none;
       border-radius: 6px;
     }
 
-    #portfolio h2 {
-      color: #fff;
-    }
+    #portfolio h2 { color: #fff; }
 
     .gallery {
       display: flex;
@@ -212,13 +204,13 @@
       display: block;
       padding: 12px;
       text-decoration: none;
-      color: #7FDBFF;
+      color: #00bfff;
       font-weight: bold;
       text-align: center;
     }
 
     footer {
-      background: #001F3F;
+      background: #000;
       color: #fff;
       padding: 20px;
       text-align: center;
@@ -236,7 +228,7 @@
 
 <body>
   <div id="loader">
-    <video src="videos/Monochrome Simple Business Podcast Cover (2).mp4#t=0,2.5" autoplay muted></video>
+    <video src="videos/Monochrome Simple Business Podcast Cover (2).mp4#t=0,3.5" autoplay muted></video>
   </div>
 
   <header>
@@ -259,6 +251,11 @@
     </div>
   </header>
 
+  <!-- 🌊 SVG Wave Effect -->
+  <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#0a192f" fill-opacity="1" d="M0,224L48,202.7C96,181,192,139,288,122.7C384,107,480,117,576,138.7C672,160,768,192,864,202.7C960,213,1056,203,1152,197.3C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
+  </svg>
+
   <section>
     <h2>🚀 Get Your Business Online</h2>
     <p>From ₹1999 with free GitHub hosting or upgrade anytime to a paid domain.</p>
@@ -267,7 +264,6 @@
   <section id="plans">
     <h2>📦 Our Website Plans</h2>
     <div class="plans">
-      <!-- Plan 1 -->
       <div class="plan">
         <h3>Plan 1 – ₹1999</h3>
         <ul>
@@ -279,8 +275,6 @@
         </ul>
         <a class="buy-btn" href="#">Buy Now</a>
       </div>
-
-      <!-- Plan 2 -->
       <div class="plan">
         <h3>Plan 2 – ₹4999</h3>
         <ul>
@@ -292,8 +286,6 @@
         </ul>
         <a class="buy-btn" href="#">Buy Now</a>
       </div>
-
-      <!-- Plan 3 -->
       <div class="plan">
         <h3>Plan 3 – ₹9999</h3>
         <ul>
