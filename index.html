@@ -7,6 +7,11 @@
   <meta name="description" content="Sitetopia offers affordable, professional websites for small businesses and local merchants. Plans starting at ₹499 with responsive design, animations, and more." />
   <meta name="keywords" content="affordable website, small business website, GitHub hosting, responsive design, website plans, sitetopia" />
   <meta name="author" content="Sitetopia" />
+  <meta property="og:title" content="Sitetopia – Pro Websites for Local Businesses" />
+  <meta property="og:description" content="Professional, Responsive, and Affordable Websites starting at just ₹499. Perfect for local merchants and small businesses." />
+  <meta property="og:image" content="images/banner-converted.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.sitetopia.in" />
   <title>Sitetopia – Pro Websites for Local Businesses</title>
   <style>
     * {
@@ -46,12 +51,18 @@
       height: 320px;
       object-fit: cover;
       border-radius: 16px;
+      animation: slowFade 5s linear;
+    }
+
+    @keyframes slowFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     header {
       position: relative;
       height: 70vh;
-      background: url('images/Black and White Modern Tech Company Presentation.pdf') no-repeat center center/cover;
+      background: url('images/banner-converted.jpg') no-repeat center center/cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -72,6 +83,7 @@
     header .overlay {
       position: relative;
       z-index: 2;
+      padding: 20px;
     }
 
     header h1 {
@@ -82,6 +94,10 @@
     header p {
       font-size: 1.2rem;
       margin-top: 10px;
+    }
+
+    .cta {
+      margin-top: 20px;
     }
 
     .cta a {
@@ -106,7 +122,9 @@
         margin: 20px auto;
         display: block;
       }
-      header { height: 40vh; }
+      header {
+        height: 40vh;
+      }
     }
 
     section {
@@ -128,6 +146,7 @@
       padding: 24px;
       width: 320px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      margin-top: 20px;
     }
 
     .plan h3 {
@@ -189,8 +208,9 @@
   </style>
   <script>
     window.onload = () => {
-      const loader = document.getElementById('loader');
-      loader.style.display = 'none';
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 5000);
     }
   </script>
 </head>
