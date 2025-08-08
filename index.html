@@ -18,7 +18,7 @@
   <meta property="og:url" content="https://sitetopia.run.place/" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/Colorful%20Abstract%20Fox%20Free%20Logo%20.png" />
+  <link rel="icon" type="image/png" href="images/Colorful Abstract Fox Free Logo .png" />
 
   <title>Sitetopia – Pro Websites for Local Businesses</title>
 
@@ -28,10 +28,16 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(-45deg, #00cfff, #8a0303, #0f1c2e, #0874b2, #ff5e00);
-      background-size: 600% 600%;
+      background: linear-gradient(-45deg,
+        #001F3F,
+        #0074D9,
+        #7FDBFF,
+        #39CCCC,
+        #3E8EDE);
+      background-size: 400% 400%;
       animation: gradientBG 20s ease infinite;
       color: #fff;
     }
@@ -60,7 +66,7 @@
       height: 320px;
       object-fit: cover;
       border-radius: 16px;
-      animation: slowFade 3s linear;
+      animation: slowFade 5s linear;
     }
 
     @keyframes slowFade {
@@ -110,7 +116,7 @@
     }
 
     .cta a {
-      background: #a30000;
+      background: #0074D9;
       color: #fff;
       padding: 12px 24px;
       text-decoration: none;
@@ -131,6 +137,7 @@
         margin: 20px auto;
         display: block;
       }
+
       header {
         height: 40vh;
       }
@@ -170,14 +177,16 @@
 
     .plan .buy-btn {
       display: inline-block;
-      background: #ff4500;
+      background: #0055aa;
       color: #fff;
       padding: 10px 20px;
       text-decoration: none;
       border-radius: 6px;
     }
 
-    #portfolio h2 { color: #fff; }
+    #portfolio h2 {
+      color: #fff;
+    }
 
     .gallery {
       display: flex;
@@ -203,16 +212,13 @@
       display: block;
       padding: 12px;
       text-decoration: none;
-      background: #ff4500;
-      color: #fff;
+      color: #7FDBFF;
       font-weight: bold;
       text-align: center;
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
     }
 
     footer {
-      background: #000;
+      background: #001F3F;
       color: #fff;
       padding: 20px;
       text-align: center;
@@ -223,13 +229,14 @@
     window.onload = () => {
       setTimeout(() => {
         document.getElementById('loader').style.display = 'none';
-      }, 3500); // 3.5 seconds to match video trim
+      }, 5000);
     }
   </script>
 </head>
+
 <body>
   <div id="loader">
-    <video src="videos/Monochrome Simple Business Podcast Cover (2).mp4#t=0,3.5" autoplay muted></video>
+    <video src="videos/Monochrome Simple Business Podcast Cover (2).mp4#t=0,2.5" autoplay muted></video>
   </div>
 
   <header>
@@ -260,6 +267,7 @@
   <section id="plans">
     <h2>📦 Our Website Plans</h2>
     <div class="plans">
+      <!-- Plan 1 -->
       <div class="plan">
         <h3>Plan 1 – ₹1999</h3>
         <ul>
@@ -271,6 +279,8 @@
         </ul>
         <a class="buy-btn" href="#">Buy Now</a>
       </div>
+
+      <!-- Plan 2 -->
       <div class="plan">
         <h3>Plan 2 – ₹4999</h3>
         <ul>
@@ -282,6 +292,8 @@
         </ul>
         <a class="buy-btn" href="#">Buy Now</a>
       </div>
+
+      <!-- Plan 3 -->
       <div class="plan">
         <h3>Plan 3 – ₹9999</h3>
         <ul>
@@ -301,7 +313,7 @@
     <div class="gallery">
       <div class="gallery-item">
         <img src="https://www.dooshtoons.linkpc.net/logo.png" alt="Sample Site Logo" />
-        <a href="https://www.dooshtoons.linkpc.net/" target="_blank">🔗 Visit Website</a>
+        <a href="https://www.dooshtoons.linkpc.net/" target="_blank">View Sample</a>
       </div>
     </div>
   </section>
@@ -312,4 +324,3 @@
   </footer>
 </body>
 </html>
-
