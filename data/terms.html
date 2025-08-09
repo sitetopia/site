@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -147,6 +147,10 @@
     <label for="agreeCheckbox"><b>I have read and agree to the Terms & Conditions</b></label>
   </div>
 
+  <!-- Step 1: Fill Google Form -->
+  <button id="formBtn" class="btn">Fill Google Form</button>
+
+  <!-- Step 2: Continue -->
   <button id="continueBtn" class="btn">Continue</button>
 </div>
 
@@ -156,22 +160,42 @@
 
 <script>
   const checkbox = document.getElementById('agreeCheckbox');
+  const formBtn = document.getElementById('formBtn');
   const continueBtn = document.getElementById('continueBtn');
 
+  let formFilled = false;
+
+  // Disable buttons initially
+  formBtn.disabled = true;
+  continueBtn.disabled = true;
+
+  // Enable "Fill Google Form" button after agreeing
   checkbox.addEventListener('change', function() {
     if (this.checked) {
-      continueBtn.classList.add('enabled');
-      continueBtn.disabled = false;
-      continueBtn.style.pointerEvents = 'auto';
-      continueBtn.onclick = function() {
-        // Redirect to Google Form
-        window.location.href = "https://forms.gle/ogxhh7PsCaFLZrQ79";
-      }
+      formBtn.classList.add('enabled');
+      formBtn.disabled = false;
     } else {
+      formBtn.classList.remove('enabled');
+      formBtn.disabled = true;
       continueBtn.classList.remove('enabled');
       continueBtn.disabled = true;
-      continueBtn.style.pointerEvents = 'none';
-      continueBtn.onclick = null;
+    }
+  });
+
+  // When clicking "Fill Google Form"
+  formBtn.addEventListener('click', function() {
+    window.open("https://forms.gle/3JPnTKoJooL1Uvs18", "_blank"); 
+    formFilled = true;
+    continueBtn.classList.add('enabled');
+    continueBtn.disabled = false;
+  });
+
+  // When clicking "Continue"
+  continueBtn.addEventListener('click', function() {
+    if (formFilled) {
+      window.location.href = "pay.html"; // Your next page
+    } else {
+      alert("Please fill the Google Form first.");
     }
   });
 </script>
