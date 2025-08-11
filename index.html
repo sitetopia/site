@@ -18,143 +18,106 @@
   <meta property="og:url" content="https://sitetopia.run.place/" />
 
   <!-- Favicon -->
-  <link rel="icon" href="images/Colorful-Abstract-Fox-Free-Logo.png" type="image/png" />
-
-  <style>
-    :root{
-      --bg:#041529; --panel:#0e2637; --accent:#0ec4ff; --muted:#9fc8df; --glass: rgba(255,255,255,0.03);
-      --card-grad: linear-gradient(180deg,#0b2b3f,#071827);
-      --radius:12px;
+  <link rel="icon" href="images/Colorful-Abstract-Fox-Free-Logo.png" type="image/png" /><style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;padding:18px;font-family:Inter,system-ui,Arial;color:#eaf6ff;
-      background:linear-gradient(180deg,var(--bg),#02101a);-webkit-font-smoothing:antialiased;
+    header {
+        background: #007BFF;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
-
-    /* Header */
-    .wrap { max-width:1200px;margin:0 auto }
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{width:52px;height:52px;border-radius:10px;object-fit:cover}
-    h1{font-size:20px;margin:0;color:var(--accent)}
-    .tag{color:var(--muted);font-size:13px}
-
-    .controls{display:flex;gap:10px;align-items:center}
-    .search{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;min-width:220px}
-    .small-btn{background:var(--glass);color:var(--muted);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);cursor:pointer;font-weight:700}
-
-    .container{max-width:1200px;margin:18px auto 60px;padding:0 6px}
-
-    /* Ad */
-    .ad{display:flex;justify-content:center;margin:12px 0}
-
-    /* Slider */
-    .slider-wrap{overflow:hidden;margin-top:12px}
-    .slider{display:flex;gap:12px;padding:8px 4px;will-change:transform;scroll-behavior:smooth}
-    .slide{flex:0 0 300px;border-radius:var(--radius);background:var(--card-grad);padding:10px;box-shadow:0 10px 30px rgba(0,0,0,0.45);cursor:pointer;transition:transform .25s}
-    .slide:hover{transform:translateY(-6px)}
-    .slide .imgwrap{height:160px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
-    .slide h3{font-size:15px;margin:10px 0 4px;color:#fff}
-    .slide p{color:var(--muted);font-size:13px;margin:0}
-
-    /* Categories */
-    .cats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-    .cat{padding:7px 10px;border-radius:999px;background:var(--glass);color:var(--muted);font-weight:800;cursor:pointer;border:1px solid rgba(255,255,255,0.03)}
-    .cat.active{background:rgba(14,196,255,0.12);color:var(--accent);border-color:rgba(14,196,255,0.2)}
-
-    /* Add Links */
-    .add-block{display:flex;gap:12px;margin-top:16px;align-items:flex-start;flex-wrap:wrap}
-    textarea{flex:1;min-height:90px;padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.05);color:#fff;font-size:14px}
-    .side-controls{display:flex;flex-direction:column;gap:8px;min-width:140px}
-
-    /* Grid */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px}
-    .card{background:var(--card-grad);border-radius:12px;padding:12px;box-shadow:0 8px 26px rgba(0,0,0,0.45);display:flex;flex-direction:column;min-height:320px}
-    .iframe-wrap{width:100%;height:180px;border-radius:10px;overflow:hidden;background:#021827;border:1px solid rgba(255,255,255,0.03)}
-    .title{margin-top:10px;font-weight:700;font-size:15px;min-height:44px}
-    .desc{color:var(--muted);font-size:13px;margin-top:8px;flex:1}
-    .actions{display:flex;gap:8px;margin-top:12px}
-    .btn{flex:1;padding:10px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:800;font-size:14px;text-align:center;text-decoration:none}
-    .btn.explore{background:var(--accent);color:#021425}
-    .btn.buy{background:#00e686;color:#021425}
-
-    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
-
-    @media (max-width:760px){
-      header{flex-direction:column;align-items:flex-start;gap:10px}
-      .slide{flex:0 0 80%}
-      .iframe-wrap{height:140px}
-      .card{min-height:280px}
-      .controls{width:100%;justify-content:space-between}
+    .controls {
+        display: flex;
+        gap: 10px;
+        padding: 1rem;
+        background: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
-  </style>
+    input, select {
+        padding: 8px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        flex: 1;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        padding: 1rem;
+    }
+    .card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.2s ease;
+    }
+    .card:hover {
+        transform: scale(1.05);
+    }
+    .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+    .card h3 {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+    }
+    .card p {
+        color: #555;
+        font-size: 0.9rem;
+        padding-bottom: 0.5rem;
+    }
+    /* Loader */
+    #loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        flex-direction: column;
+    }
+    #loader span {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        color: #007BFF;
+    }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <img src="images/Colorful-Abstract-Fox-Free-Logo.png" alt="Sitetopia logo" />
-        <div>
-          <h1>Sitetopia — Deals Hub</h1>
-          <div class="tag">Curated affiliate picks • affordable finds • cozy shopping experience</div>
-        </div>
-      </div>
 
-      <div class="controls">
-        <input id="search" class="search" placeholder="Search products or categories..." aria-label="Search products" />
-        <button id="refreshBtn" class="small-btn" title="Re-fetch previews">Refresh</button>
-      </div>
-    </header>
+<header>Product Showcase</header>
 
-    <main class="container">
-      <!-- Adsterra banner -->
-      <div class="ad" id="adsterra-banner">
-        <script type="text/javascript">
-          atOptions = {
-            'key' : 'f7e49d2b76f2d911c502efa91b2492d1',
-            'format' : 'iframe',
-            'height' : 90,
-            'width' : 728,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/f7e49d2b76f2d911c502efa91b2492d1/invoke.js"></script>
-      </div>
+<div id="loader">
+    <div id="loader-text">Loading...</div>
+    <span>Please wait</span>
+</div>
 
-      <!-- Featured slider -->
-      <div class="slider-wrap"><div id="slider" class="slider" aria-hidden="false"></div></div>
+<div class="controls" style="display:none;">
+    <input type="text" id="search" placeholder="Search products...">
+    <select id="category">
+        <option value="">All Categories</option>
+    </select>
+</div>
 
-      <!-- Categories -->
-      <div id="categoryContainer" class="cats" aria-label="Categories"></div>
-
-      <!-- Add links -->
-      <div class="add-block">
-        <textarea id="linksArea" placeholder="Paste affiliate links here (one per line). Example: https://fktr.in/jIel9gQ"></textarea>
-        <div class="side-controls">
-          <button id="addLinksBtn" class="small-btn">Add Links</button>
-          <button id="clearBtn" class="small-btn">Clear All</button>
-          <button id="filterAllBtn" class="small-btn">Show All</button>
-        </div>
-      </div>
-
-      <!-- Product grid -->
-      <section id="productsSection">
-        <div id="grid" class="grid" role="list"></div>
-      </section>
-    </main>
-
-    <footer>© 2025 Sitetopia — curated deals & affiliate hub. We may receive commissions from purchases at no extra cost to you.</footer>
-  </div>
+<div class="grid" style="display:none;"></div>
 
 <script>
-/* ---------- Config ---------- */
-const MICROLINK_BASE = 'https://api.microlink.io';
-const MICROLINK_KEY = ''; // OPTIONAL: add your microlink key here to avoid rate limits
-
-/* ---------- Initial product list (cleaned & categorized) ---------- */
 const initialList = [
-  { label: 'Mobile accessories — from ₹39', url:'https://fktr.in/jIel9gQ', note:'starting from 39', category:'Electronics' },
+ { label: 'Mobile accessories — from ₹39', url:'https://fktr.in/jIel9gQ', note:'starting from 39', category:'Electronics' },
   { label: 'Bluetooth speakers — from ₹320', url:'https://fktr.in/SE33sqa', note:'starting from 320', category:'Electronics' },
   { label: 'Men casual shoes — from ₹199', url:'https://fktr.in/0lflGyH', note:'starting from 199', category:'Footwear' },
   { label: 'Jars — from ₹258', url:'https://fktr.in/jrANS63', note:'starting from 258', category:'Home & Kitchen' },
@@ -203,262 +166,85 @@ const initialList = [
   { label: 'Men T-shirts — from ₹100', url:'https://ajiio.in/mFloXWh', note:'starting from 100', category:'Apparel' }
 ];
 
-/* ---------- State ---------- */
-let products = []; // array of enriched product objects
-let categories = new Set();
-const gridEl = document.getElementById('grid');
-const sliderEl = document.getElementById('slider');
-const catContainer = document.getElementById('categoryContainer');
+// Loader fun text
+const funTexts = [
+    "Finding the best deals...",
+    "Polishing your products...",
+    "Dusting the shelves...",
+    "Sorting by awesomeness...",
+    "Sharpening the pixels..."
+];
 
-/* ---------- Helpers ---------- */
-function timeoutFetch(url, opts = {}, ms = 8000) {
-  const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), ms);
-  return fetch(url, {...opts, signal: controller.signal })
-    .finally(() => clearTimeout(id));
+let loaderText = document.getElementById("loader-text");
+let textIndex = 0;
+const loaderInterval = setInterval(() => {
+    loaderText.textContent = funTexts[textIndex];
+    textIndex = (textIndex + 1) % funTexts.length;
+}, 800);
+
+function nameToImage(label) {
+    return 'images/' + label
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '_')
+        .replace(/^_+|_+$/g, '') + '.jpg';
 }
 
-async function fetchMeta(url) {
-  try {
-    let endpoint = `${MICROLINK_BASE}?meta=true&embed=image.url,title,description&url=${encodeURIComponent(url)}`;
-    if (MICROLINK_KEY) endpoint += `&key=${encodeURIComponent(MICROLINK_KEY)}`;
-    const res = await timeoutFetch(endpoint, { method: 'GET' }, 9000);
-    const json = await res.json();
-    // Microlink returns data in json.data
-    if ((json.status === 'success' || json.status === 'ok') && json.data) {
-      const d = json.data;
-      const image = (d.image && (d.image.url || d.image)) ? (d.image.url || d.image) : null;
-      const title = d.title || '';
-      const description = d.description || '';
-      return { image, title, description };
-    }
-    // fallback checks
-    if (json.image || json.title) return { image: json.image || null, title: json.title || '', description: json.description || '' };
-    return null;
-  } catch (err) {
-    console.warn('fetchMeta error for', url, err && err.name ? err.name : err);
-    return null;
-  }
+function displayProducts(list) {
+    const grid = document.querySelector(".grid");
+    grid.innerHTML = "";
+    list.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+            <img src="${nameToImage(item.label)}" alt="${item.label}">
+            <h3>${item.label}</h3>
+            <p>${item.note}</p>
+        `;
+        grid.appendChild(card);
+    });
 }
 
-function inferCategory(text = '') {
-  const t = (text || '').toLowerCase();
-  if (/phone|mobile|charger|smartphone|earphone|earbuds|bluetooth|keyboard|smartwatch|watch|boat/.test(t)) return 'Electronics';
-  if (/shoe|sneaker|flip|footwear|puma|adidas/.test(t)) return 'Footwear';
-  if (/bag|backpack|trolley|suitcase|travel|organizer|cover/.test(t)) return 'Bags & Travel';
-  if (/kitchen|cookware|dinner|jar|bottle|flask|cookwear/.test(t)) return 'Home & Kitchen';
-  if (/shirt|t-shirt|jeans|kurta|kurti|ethnic|apparel|clothing/.test(t)) return 'Apparel';
-  if (/beauty|skincare|shampoo|lotion|grooming/.test(t)) return 'Beauty';
-  if (/home|sheets|clock|appliance|home deals|appliances/.test(t)) return 'Home & Decor';
-  if (/gym|fitness|massager|gym essentials/.test(t)) return 'Fitness';
-  if (/wallet|belt|earring|earings|accessory/.test(t)) return 'Accessories';
-  if (/daily|essential|essentials/.test(t)) return 'Essentials';
-  return 'Other';
+function populateCategories() {
+    const select = document.getElementById("category");
+    const categories = [...new Set(initialList.map(p => p.category))];
+    categories.forEach(cat => {
+        const opt = document.createElement("option");
+        opt.value = cat;
+        opt.textContent = cat;
+        select.appendChild(opt);
+    });
 }
 
-/* ---------- DOM builders ---------- */
-function makeIframeForImage(url) {
-  // Use srcdoc containing an <img> for better compatibility (renders image only)
-  const safe = url ? url.replace(/"/g, '&quot;') : '';
-  if (!safe) return `<style>body{margin:0;background:#081826;display:flex;align-items:center;justify-content:center;color:#9fc8df;font-family:Arial}</style><div style="padding:8px">No preview</div>`;
-  return `<style>body{margin:0;background:#081826;display:flex;align-items:center;justify-content:center}img{max-width:100%;max-height:100%;object-fit:contain}</style><img src="${safe}" alt="preview" />`;
-}
+setTimeout(() => {
+    clearInterval(loaderInterval);
+    document.getElementById("loader").style.display = "none";
+    document.querySelector(".controls").style.display = "flex";
+    document.querySelector(".grid").style.display = "grid";
+    populateCategories();
+    displayProducts(initialList);
+}, 3000);
 
-function createCard(item) {
-  const card = document.createElement('div');
-  card.className = 'card';
-  card.dataset.category = item.category || 'Other';
-  card.dataset.title = (item.title || item.label || '').toLowerCase();
-
-  const wrap = document.createElement('div');
-  wrap.className = 'iframe-wrap';
-  const frame = document.createElement('iframe');
-  frame.setAttribute('loading', 'lazy');
-  frame.style.width = '100%';
-  frame.style.height = '100%';
-  frame.style.border = '0';
-  if (item.image) frame.srcdoc = makeIframeForImage(item.image);
-  else frame.srcdoc = makeIframeForImage('');
-  // clicking the image opens the product in new tab
-  wrap.addEventListener('click', () => window.open(item.url, '_blank', 'noopener'));
-  wrap.appendChild(frame);
-
-  const title = document.createElement('div');
-  title.className = 'title';
-  title.textContent = item.title || item.label || 'Untitled product';
-
-  const desc = document.createElement('div');
-  desc.className = 'desc';
-  desc.textContent = item.note || item.description || '';
-
-  const actions = document.createElement('div');
-  actions.className = 'actions';
-  const explore = document.createElement('a');
-  explore.className = 'btn explore';
-  explore.textContent = 'Explore';
-  explore.href = item.url;
-  explore.target = '_blank'; explore.rel = 'noopener';
-  const buy = document.createElement('a');
-  buy.className = 'btn buy';
-  buy.textContent = 'Buy';
-  buy.href = item.url;
-  buy.target = '_blank'; buy.rel = 'noopener';
-  actions.appendChild(explore); actions.appendChild(buy);
-
-  card.appendChild(wrap);
-  card.appendChild(title);
-  card.appendChild(desc);
-  card.appendChild(actions);
-
-  return card;
-}
-
-function createSlide(item) {
-  const s = document.createElement('div');
-  s.className = 'slide';
-  const iw = document.createElement('div'); iw.className = 'imgwrap';
-  const frame = document.createElement('iframe');
-  frame.style.width = '100%'; frame.style.height = '100%'; frame.style.border = '0';
-  frame.setAttribute('loading', 'lazy');
-  if (item.image) frame.srcdoc = makeIframeForImage(item.image);
-  else frame.srcdoc = makeIframeForImage('');
-  iw.appendChild(frame);
-  s.appendChild(iw);
-  const h = document.createElement('h3'); h.textContent = item.title || item.label; s.appendChild(h);
-  const p = document.createElement('p'); p.textContent = item.note || item.description || ''; s.appendChild(p);
-  s.addEventListener('click', () => window.open(item.url, '_blank', 'noopener'));
-  return s;
-}
-
-/* ---------- Render / UI ---------- */
-function renderCategories() {
-  catContainer.innerHTML = '';
-  const all = document.createElement('div'); all.className = 'cat active'; all.textContent = 'All'; all.dataset.cat = '__all';
-  all.addEventListener('click', () => filterByCategory('__all'));
-  catContainer.appendChild(all);
-  Array.from(categories).sort().forEach(cat => {
-    const el = document.createElement('div');
-    el.className = 'cat';
-    el.textContent = cat;
-    el.dataset.cat = cat;
-    el.addEventListener('click', () => filterByCategory(cat));
-    catContainer.appendChild(el);
-  });
-}
-
-function renderAll() {
-  // grid
-  gridEl.innerHTML = '';
-  sliderEl.innerHTML = '';
-  // slider = first 8
-  products.slice(0,8).forEach(p => sliderEl.appendChild(createSlide(p)));
-  products.forEach(p => gridEl.appendChild(createCard(p)));
-}
-
-function filterByCategory(cat) {
-  document.querySelectorAll('.cat').forEach(c => c.classList.remove('active'));
-  Array.from(document.querySelectorAll('.cat')).find(c => c.dataset.cat === (cat==='__all' ? '__all' : cat)).classList.add('active');
-  if (cat === '__all') {
-    document.querySelectorAll('.grid .card').forEach(c => c.style.display = '');
-  } else {
-    document.querySelectorAll('.grid .card').forEach(c => c.style.display = (c.dataset.category === cat) ? '' : 'none');
-  }
-}
-
-/* ---------- Data ingestion & refresh ---------- */
-async function ingest(list) {
-  // sequential to be polite and avoid rate limits
-  for (const item of list) {
-    // skip duplicate urls
-    if (products.some(p => p.url === item.url)) continue;
-    // show temporary item with label while fetching
-    const placeholder = { label: item.label || item.url, url: item.url, note: item.note || '', category: item.category || 'Other', title: item.label || '', image: null, description: '' };
-    products.push(placeholder);
-    categories.add(placeholder.category);
-    renderCategories();
-    renderAll(); // show incremental
-    const meta = await fetchMeta(item.url);
-    if (meta) {
-      placeholder.title = meta.title || placeholder.label;
-      placeholder.image = meta.image || null;
-      placeholder.description = meta.description || placeholder.note || '';
-      // if category is default 'Other' try to infer from title
-      if ((!item.category || item.category === 'Other') && placeholder.title) {
-        placeholder.category = inferCategory(placeholder.title + ' ' + placeholder.label);
-        categories.add(placeholder.category);
-      }
-    } else {
-      // fallback: infer category from label
-      placeholder.category = placeholder.category || inferCategory(placeholder.label);
-      categories.add(placeholder.category);
-      placeholder.title = placeholder.title || placeholder.label;
-      placeholder.image = null;
-    }
-    renderCategories();
-    renderAll();
-    // small pause (optional) to avoid hitting public rate-limits too fast
-    await new Promise(r => setTimeout(r, 300));
-  }
-}
-
-/* ---------- Refresh all meta (re-fetch) ---------- */
-async function refreshAllMeta() {
-  if (!confirm('Re-fetch metadata for all items? This may take some time.')) return;
-  const copy = products.map(p => ({ label: p.label, url: p.url, note: p.note, category: p.category }));
-  products = []; categories = new Set();
-  renderCategories(); renderAll();
-  await ingest(copy);
-  alert('Refresh complete.');
-}
-
-/* ---------- Autoplay slider ---------- */
-function autoplaySlider() {
-  let dir = 1;
-  setInterval(() => {
-    if (!sliderEl) return;
-    const step = 320;
-    if (sliderEl.scrollLeft + sliderEl.clientWidth >= sliderEl.scrollWidth - 2) dir = -1;
-    if (sliderEl.scrollLeft <= 0) dir = 1;
-    sliderEl.scrollBy({ left: dir * step, behavior: 'smooth' });
-  }, 3500);
-}
-
-/* ---------- Search ---------- */
-document.getElementById('search').addEventListener('input', function() {
-  const q = this.value.trim().toLowerCase();
-  document.querySelectorAll('.grid .card').forEach(c => {
-    const t = c.dataset.title || '';
-    const cat = c.dataset.category || '';
-    c.style.display = (q === '' || t.includes(q) || cat.toLowerCase().includes(q)) ? '' : 'none';
-  });
+// Search & Filter
+document.getElementById("search").addEventListener("input", function() {
+    const searchValue = this.value.toLowerCase();
+    const categoryValue = document.getElementById("category").value;
+    const filtered = initialList.filter(item => 
+        item.label.toLowerCase().includes(searchValue) &&
+        (categoryValue === "" || item.category === categoryValue)
+    );
+    displayProducts(filtered);
 });
 
-/* ---------- Buttons ---------- */
-document.getElementById('addLinksBtn').addEventListener('click', async () => {
-  const txt = document.getElementById('linksArea').value.trim();
-  if (!txt) return alert('Paste links (one per line) and click Add Links.');
-  const lines = txt.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
-  const items = lines.map(u => ({ label: u, url: u, note: '', category: 'Other' }));
-  document.getElementById('linksArea').value = '';
-  await ingest(items);
+document.getElementById("category").addEventListener("change", function() {
+    const searchValue = document.getElementById("search").value.toLowerCase();
+    const categoryValue = this.value;
+    const filtered = initialList.filter(item => 
+        item.label.toLowerCase().includes(searchValue) &&
+        (categoryValue === "" || item.category === categoryValue)
+    );
+    displayProducts(filtered);
 });
-
-document.getElementById('clearBtn').addEventListener('click', () => {
-  if (confirm('Clear all items?')) {
-    products = []; categories = new Set();
-    renderCategories(); renderAll();
-  }
-});
-
-document.getElementById('filterAllBtn').addEventListener('click', () => filterByCategory('__all'));
-document.getElementById('refreshBtn').addEventListener('click', refreshAllMeta);
-
-/* ---------- Initialize ---------- */
-(async function init() {
-  await ingest(initialList);
-  autoplaySlider();
-})();
-
 </script>
+
 </body>
 </html>
