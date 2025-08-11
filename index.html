@@ -1,174 +1,464 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="google-site-verification" content="jmoW5D4IDt93IECcOwlRQ2NYLf0m7NL7fwuLSt2rMR4" />
 
-  <!-- SEO -->
-  <meta name="description" content="Welcome to Sitetopia – Get your own stunning, responsive website starting at ₹1999! Free domain, ad-monetization, fast delivery, and custom designs for shopkeepers, small businesses, and institutes." />
-  <meta name="keywords" content="affordable website, small business website, hosting, responsive design, website plans, sitetopia, delivery integration, ads monetization, free domain" />
+  <title>Sitetopia — Deals Hub & Affiliate Store</title>
+  <meta name="description" content="Sitetopia curated deals: top affiliate picks from Amazon, Ajio, EarnKaro & more. Discover affordable products, hand-picked offers, and easy shopping—all in one cozy place." />
+  <meta name="keywords" content="affiliate, deals, earnkaro, amazon, ajio, discounts, sitetopia, affordable, shop" />
   <meta name="author" content="Sitetopia" />
 
-  <!-- Open Graph / WhatsApp Preview -->
-  <meta property="og:title" content="Sitetopia – Pro Websites from ₹1999" />
-  <meta property="og:description" content="Launch your online presence with Sitetopia. Free domain, responsive design, fast delivery, ads-based income, and plans starting at ₹1999!" />
-  <meta property="og:image" content="https://sitetopia.run.place/images/Colorful-Abstract-Fox-Free-Logo.png" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sitetopia — Deals Hub & Affiliate Store" />
+  <meta property="og:description" content="Curated deals, fast previews and direct links — your one-stop store for affiliate offers." />
+  <meta property="og:image" content="images/Colorful-Abstract-Fox-Free-Logo.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sitetopia.run.place/" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/Colorful-Abstract-Fox-Free-Logo.png" />
+  <link rel="icon" href="images/Colorful-Abstract-Fox-Free-Logo.png" type="image/png" />
 
-  <title>Sitetopia – Pro Websites for Local Businesses</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(-45deg, #0a192f, #0c2344, #102c54, #081d3f);
-      background-size: 600% 600%;
-      animation: darkBlueBG 20s ease infinite;
-      color: #fff;
-      overflow-x: hidden;
+    :root{
+      --bg:#041529; --panel:#0e2637; --accent:#0ec4ff; --muted:#9fc8df; --glass: rgba(255,255,255,0.03);
+      --card-grad: linear-gradient(180deg,#0b2b3f,#071827);
+      --radius:12px;
     }
-    @keyframes darkBlueBG { 0% {background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
-
-    /* Loader */
-    #loader {
-      position: fixed; top:0; left:0;
-      width:100%; height:100%;
-      background:#000;
-      display:flex; align-items:center; justify-content:center;
-      z-index:9999;
-    }
-    #loader.hidden { display: none; }
-    #loader video {
-      max-width: 80%; max-height:80%; border-radius:16px;
+    *{box-sizing:border-box}
+    body{
+      margin:0;padding:18px;font-family:Inter,system-ui,Arial;color:#eaf6ff;
+      background:linear-gradient(180deg,var(--bg),#02101a);-webkit-font-smoothing:antialiased;
     }
 
     /* Header */
-    header {
-      position:relative; min-height:50vh;
-      background:url('images/banner-converted.jpg') center/cover no-repeat;
-      display:flex; align-items:center; justify-content:center; text-align:center;
-      padding:20px;
-    }
-    header::after {
-      content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6);
-    }
-    .overlay { position:relative; z-index:1; max-width:90%; }
-    h1 { font-size:2.5rem; }
-    p { margin-top:8px; font-size:1rem; }
-    .cta a { display:inline-block; margin-top:20px; padding:10px 20px; background:#005ea3; color:#fff; text-decoration:none; border-radius:6px; }
-    .ad-banner { position:absolute; top:10px; right:10px; }
+    .wrap { max-width:1200px;margin:0 auto }
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:52px;height:52px;border-radius:10px;object-fit:cover}
+    h1{font-size:20px;margin:0;color:var(--accent)}
+    .tag{color:var(--muted);font-size:13px}
 
-    /* Sections */
-    section { padding:40px 20px; text-align:center; }
-    .plans { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-    .plan { background:rgba(255,255,255,0.05); padding:20px; border-radius:12px; width:100%; max-width:300px; }
-    .plan h3 { font-size:1.3rem; }
-    .plan ul { text-align:left; margin:10px 0; }
-    .buy-btn { display:block; margin-top:10px; padding:8px; background:#0074D9; color:#fff; text-align:center; border-radius:6px; text-decoration:none; }
+    .controls{display:flex;gap:10px;align-items:center}
+    .search{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;min-width:220px}
+    .small-btn{background:var(--glass);color:var(--muted);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);cursor:pointer;font-weight:700}
 
-    /* Portfolio */
-    #portfolio .gallery { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; }
-    .gallery-item { width:100%; max-width:280px; }
-    .gallery-item img { width:100%; }
-    .gallery-item a { display:block; padding:10px; background:#005ea3; color:#fff; text-align:center; border-bottom-left-radius:8px; border-bottom-right-radius:8px; text-decoration:none; }
+    .container{max-width:1200px;margin:18px auto 60px;padding:0 6px}
 
-    footer { background:#000; padding:20px; text-align:center; font-size:0.9rem; }
+    /* Ad */
+    .ad{display:flex;justify-content:center;margin:12px 0}
 
-    @media(max-width:768px) {
-      h1 { font-size:2rem; }
-      p { font-size:0.9rem; }
+    /* Slider */
+    .slider-wrap{overflow:hidden;margin-top:12px}
+    .slider{display:flex;gap:12px;padding:8px 4px;will-change:transform;scroll-behavior:smooth}
+    .slide{flex:0 0 300px;border-radius:var(--radius);background:var(--card-grad);padding:10px;box-shadow:0 10px 30px rgba(0,0,0,0.45);cursor:pointer;transition:transform .25s}
+    .slide:hover{transform:translateY(-6px)}
+    .slide .imgwrap{height:160px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+    .slide h3{font-size:15px;margin:10px 0 4px;color:#fff}
+    .slide p{color:var(--muted);font-size:13px;margin:0}
+
+    /* Categories */
+    .cats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .cat{padding:7px 10px;border-radius:999px;background:var(--glass);color:var(--muted);font-weight:800;cursor:pointer;border:1px solid rgba(255,255,255,0.03)}
+    .cat.active{background:rgba(14,196,255,0.12);color:var(--accent);border-color:rgba(14,196,255,0.2)}
+
+    /* Add Links */
+    .add-block{display:flex;gap:12px;margin-top:16px;align-items:flex-start;flex-wrap:wrap}
+    textarea{flex:1;min-height:90px;padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.05);color:#fff;font-size:14px}
+    .side-controls{display:flex;flex-direction:column;gap:8px;min-width:140px}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px}
+    .card{background:var(--card-grad);border-radius:12px;padding:12px;box-shadow:0 8px 26px rgba(0,0,0,0.45);display:flex;flex-direction:column;min-height:320px}
+    .iframe-wrap{width:100%;height:180px;border-radius:10px;overflow:hidden;background:#021827;border:1px solid rgba(255,255,255,0.03)}
+    .title{margin-top:10px;font-weight:700;font-size:15px;min-height:44px}
+    .desc{color:var(--muted);font-size:13px;margin-top:8px;flex:1}
+    .actions{display:flex;gap:8px;margin-top:12px}
+    .btn{flex:1;padding:10px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:800;font-size:14px;text-align:center;text-decoration:none}
+    .btn.explore{background:var(--accent);color:#021425}
+    .btn.buy{background:#00e686;color:#021425}
+
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+
+    @media (max-width:760px){
+      header{flex-direction:column;align-items:flex-start;gap:10px}
+      .slide{flex:0 0 80%}
+      .iframe-wrap{height:140px}
+      .card{min-height:280px}
+      .controls{width:100%;justify-content:space-between}
     }
   </style>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const loader = document.getElementById('loader');
-      setTimeout(() => loader.classList.add('hidden'), 3500);
-    });
-  </script>
 </head>
 <body>
-  <div id="loader">
-    <video src="videos/Monochrome Simple Business Podcast Cover (2).mp4#t=0,3.5" autoplay muted playsinline></video>
-  </div>
-
-  <header>
-    <div class="overlay">
-      <h1>Welcome to Sitetopia</h1>
-      <p>Professional, Responsive, and Affordable Websites</p>
-      <div class="cta"><a href="#plans">See Plans</a></div>
-    </div>
-    <div class="ad-banner">
-      <script>atOptions = {key:'1a00a3639ea540626d1509e0c15ebba9',format:'iframe',height:60,width:468,params:{}};</script>
-      <script src="//www.highperformanceformat.com/1a00a3639ea540626d1509e0c15ebba9/invoke.js"></script>
-    </div>
-  </header>
-
-  <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
-    <path fill="#081d3f" d="M0,224L48,202.7C96,181,192,139,288,122.7C384,107,480,117,576,138.7C672,160,768,192,864,202.7C960,213,1056,203,1152,197.3C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
-  </svg>
-
-  <section>
-    <h2>🚀 Get Your Business Online</h2>
-    <p>From ₹1999 with free GitHub hosting or upgrade anytime to a paid domain.</p>
-  </section>
-<section id="plans">
-  <h2>📦 Our Website Plans</h2>
-  <div class="plans">
-    <div class="plan">
-      <h3>Plan 1 – ₹1999</h3>
-      <ul>
-        <li>Ad-supported site – earn money</li>
-        <li>Custom theme & features</li>
-        <li>Free domain (downtime possible)</li>
-        <li>Delivery: 2–3 weeks</li>
-        <li>Updates: ₹250–₹500/week or month</li>
-      </ul>
-      <a class="buy-btn" href="data/terms.html">Buy Now</a>
-    </div>
-    <div class="plan">
-      <h3>Plan 2 – ₹4999</h3>
-      <ul>
-        <li>Paid .com/.in domain (₹2000–₹3000/yr)</li>
-        <li>No downtime</li>
-        <li>Priority support</li>
-        <li>Delivery: 1–2 weeks</li>
-        <li>Weekly/monthly updates</li>
-      </ul>
-      <a class="buy-btn" href="data/terms.html">Buy Now</a>
-    </div>
-    <div class="plan">
-      <h3>Plan 3 – ₹9999</h3>
-      <ul>
-        <li>All Plan 2 features</li>
-        <li>Delivery integration (Zomato, Zepto)</li>
-        <li>Personal assistant support</li>
-        <li>Fastest delivery: 1 week</li>
-        <li>Domain cost: ₹1999–₹2999/yr</li>
-      </ul>
-      <a class="buy-btn" href="data/terms.html">Buy Now</a>
-    </div>
-  </div>
-</section>
-
-  
-  <section id="portfolio">
-    <h2>🌐 Our Created Websites</h2>
-    <div class="gallery">
-      <div class="gallery-item">
-        <img src="https://www.dooshtoons.linkpc.net/logo.png" alt="Sample Site Logo" />
-        <a href="https://www.dooshtoons.linkpc.net/" target="_blank">View Sample</a>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="images/Colorful-Abstract-Fox-Free-Logo.png" alt="Sitetopia logo" />
+        <div>
+          <h1>Sitetopia — Deals Hub</h1>
+          <div class="tag">Curated affiliate picks • affordable finds • cozy shopping experience</div>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <footer>
-    <p>Contact us: WhatsApp +91-XXXXXXXXXX | support@sitetopia.in</p>
-    <p>&copy; 2025 Sitetopia. All Rights Reserved.</p>
-  </footer>
+      <div class="controls">
+        <input id="search" class="search" placeholder="Search products or categories..." aria-label="Search products" />
+        <button id="refreshBtn" class="small-btn" title="Re-fetch previews">Refresh</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Adsterra banner -->
+      <div class="ad" id="adsterra-banner">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : 'f7e49d2b76f2d911c502efa91b2492d1',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/f7e49d2b76f2d911c502efa91b2492d1/invoke.js"></script>
+      </div>
+
+      <!-- Featured slider -->
+      <div class="slider-wrap"><div id="slider" class="slider" aria-hidden="false"></div></div>
+
+      <!-- Categories -->
+      <div id="categoryContainer" class="cats" aria-label="Categories"></div>
+
+      <!-- Add links -->
+      <div class="add-block">
+        <textarea id="linksArea" placeholder="Paste affiliate links here (one per line). Example: https://fktr.in/jIel9gQ"></textarea>
+        <div class="side-controls">
+          <button id="addLinksBtn" class="small-btn">Add Links</button>
+          <button id="clearBtn" class="small-btn">Clear All</button>
+          <button id="filterAllBtn" class="small-btn">Show All</button>
+        </div>
+      </div>
+
+      <!-- Product grid -->
+      <section id="productsSection">
+        <div id="grid" class="grid" role="list"></div>
+      </section>
+    </main>
+
+    <footer>© 2025 Sitetopia — curated deals & affiliate hub. We may receive commissions from purchases at no extra cost to you.</footer>
+  </div>
+
+<script>
+/* ---------- Config ---------- */
+const MICROLINK_BASE = 'https://api.microlink.io';
+const MICROLINK_KEY = ''; // OPTIONAL: add your microlink key here to avoid rate limits
+
+/* ---------- Initial product list (cleaned & categorized) ---------- */
+const initialList = [
+  { label: 'Mobile accessories — from ₹39', url:'https://fktr.in/jIel9gQ', note:'starting from 39', category:'Electronics' },
+  { label: 'Bluetooth speakers — from ₹320', url:'https://fktr.in/SE33sqa', note:'starting from 320', category:'Electronics' },
+  { label: 'Men casual shoes — from ₹199', url:'https://fktr.in/0lflGyH', note:'starting from 199', category:'Footwear' },
+  { label: 'Jars — from ₹258', url:'https://fktr.in/jrANS63', note:'starting from 258', category:'Home & Kitchen' },
+  { label: 'Clocks — from ₹144', url:'https://fktr.in/F0tVy7V', note:'starting from 144', category:'Home & Decor' },
+  { label: 'Backpacks — from ₹399', url:'https://fktr.in/CXaedZw', note:'starting from 399', category:'Bags & Travel' },
+  { label: 'Kitchen cookware — from ₹44', url:'https://fktr.in/f975tBe', note:'starting from 44', category:'Home & Kitchen' },
+  { label: 'Skincare — from ₹22', url:'https://fktr.in/a45j5vr', note:'starting from 22', category:'Beauty' },
+  { label: 'Daily essentials — from ₹99', url:'https://fktr.in/cL1wZp3', note:'starting from 99', category:'Essentials' },
+  { label: 'Water bottles & flasks — from ₹49', url:'https://fktr.in/HkgtnPq', note:'starting from 49', category:'Home & Kitchen' },
+  { label: 'Keyboards — from ₹189', url:'https://fktr.in/s809b7o', note:'starting from 189', category:'Electronics' },
+  { label: 'Dinner sets — from ₹99', url:'https://fktr.in/bkWSzo9', note:'starting from 99', category:'Home & Kitchen' },
+  { label: 'Women flip-flops — from ₹75', url:'https://fktr.in/zIoXEB5', note:'starting from 75', category:'Footwear' },
+  { label: 'Beauty & grooming — from ₹43', url:'https://fktr.in/CNDS5sU', note:'starting from 43', category:'Beauty' },
+  { label: 'Men sport shoes — from ₹40', url:'https://fktr.in/KL9CtnB', note:'starting from 40', category:'Footwear' },
+  { label: 'Waterproof backpack cover — from ₹159', url:'https://fktr.in/Xvu7NOE', note:'starting from 159', category:'Bags & Travel' },
+  { label: 'Travel organizers — from ₹300', url:'https://fktr.in/kol296y', note:'starting from 300', category:'Bags & Travel' },
+  { label: 'Trolley bags — from ₹1114', url:'https://fktr.in/yG30bzH', note:'starting from 1114', category:'Bags & Travel' },
+  { label: 'Cargo pants — from ₹272', url:'https://fktr.in/vjEILqO', note:'starting from 272', category:'Apparel' },
+  { label: 'Luxury smartwatches — from ₹2500', url:'https://fktr.in/pOLAnpk', note:'starting from 2500', category:'Electronics' },
+  { label: 'Head massager — from ₹99', url:'https://fktr.in/mstw1DH', note:'starting from 99', category:'Wellness' },
+  { label: 'Gym essentials — from ₹70', url:'https://fktr.in/cdl8XhR', note:'starting from 70', category:'Fitness' },
+  { label: 'Women footwear — from ₹300', url:'https://fktr.in/7TNBrjb', note:'starting from 300', category:'Footwear' },
+  { label: 'Branded suitcases — from ₹1549', url:'https://fktr.in/rvc98Xg', note:'starting from 1549', category:'Bags & Travel' },
+  { label: 'Earphones — from ₹699', url:'https://fktr.in/BGzWwlW', note:'starting from 699', category:'Electronics' },
+  { label: 'Smartphones — from ₹5000', url:'https://fktr.in/pdy6f0Z', note:'starting from 5000', category:'Electronics' },
+  { label: 'Shampoos — from ₹88', url:'https://fktr.in/qJDqxfh', note:'starting from 88', category:'Beauty' },
+  { label: 'Lotions — from ₹20', url:'https://fktr.in/ZBo53gj', note:'starting from 20', category:'Beauty' },
+  { label: 'Home appliances — from ₹1080', url:'https://fktr.in/rr7ZZme', note:'starting from 1080', category:'Home Appliances' },
+  { label: 'Wallets & belts — from ₹99', url:'https://fktr.in/03aWzx3', note:'starting from 99', category:'Accessories' },
+  { label: 'Men sneakers — from ₹499', url:'https://fktr.in/bNQkp4n', note:'starting from 499', category:'Footwear' },
+  { label: 'Formal shirts — from ₹299', url:'https://fktr.in/1QDzML3', note:'starting from 299', category:'Apparel' },
+  { label: 'Women jeans — from ₹399', url:'https://fktr.in/iqWeuhD', note:'starting from 399', category:'Apparel' },
+  { label: 'Mobile chargers — from ₹79', url:'https://fktr.in/k52WosL', note:'starting from 79', category:'Electronics' },
+  { label: 'Puma & Adidas shoes — from ₹639', url:'https://fktr.in/0EjsyfL', note:'starting from 639', category:'Footwear' },
+  { label: 'boAt smartwatches — from ₹999', url:'https://fktr.in/BvX54kC', note:'starting from 999', category:'Electronics' },
+  { label: 'Home deals — from ₹399', url:'https://fktr.in/nU2sA6F', note:'starting from 399', category:'Home & Kitchen' },
+  { label: 'Double bed sheets — from ₹294', url:'https://ajiio.in/3SgoKc2', note:'starting from 294', category:'Home & Decor' },
+  { label: 'Kurtas & kurtis — from ₹283', url:'https://ajiio.in/xzgM9s5', note:'starting from 283', category:'Apparel' },
+  { label: 'Oversized T-shirts — from ₹175', url:'https://ajiio.in/8ukV93s', note:'starting from 175', category:'Apparel' },
+  { label: 'Ethnic wear — from ₹105', url:'https://ajiio.in/iFimuhX', note:'starting from 105', category:'Apparel' },
+  { label: 'Earrings — from ₹399', url:'https://ajiio.in/o3lB4jm', note:'starting from 399', category:'Accessories' },
+  { label: 'Funky T-shirts — from ₹149', url:'https://ajiio.in/Qh8q1jZ', note:'starting from 149', category:'Apparel' },
+  { label: 'Women western — from ₹399', url:'https://ajiio.in/5O1Yxxt', note:'starting from 399', category:'Apparel' },
+  { label: 'Men ethnic wear — from ₹299', url:'https://ajiio.in/RzBEShg', note:'starting from 299', category:'Apparel' },
+  { label: 'Jeans — from ₹500', url:'https://ajiio.in/TVt78bu', note:'starting from 500', category:'Apparel' },
+  { label: 'Men T-shirts — from ₹100', url:'https://ajiio.in/mFloXWh', note:'starting from 100', category:'Apparel' }
+];
+
+/* ---------- State ---------- */
+let products = []; // array of enriched product objects
+let categories = new Set();
+const gridEl = document.getElementById('grid');
+const sliderEl = document.getElementById('slider');
+const catContainer = document.getElementById('categoryContainer');
+
+/* ---------- Helpers ---------- */
+function timeoutFetch(url, opts = {}, ms = 8000) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), ms);
+  return fetch(url, {...opts, signal: controller.signal })
+    .finally(() => clearTimeout(id));
+}
+
+async function fetchMeta(url) {
+  try {
+    let endpoint = `${MICROLINK_BASE}?meta=true&embed=image.url,title,description&url=${encodeURIComponent(url)}`;
+    if (MICROLINK_KEY) endpoint += `&key=${encodeURIComponent(MICROLINK_KEY)}`;
+    const res = await timeoutFetch(endpoint, { method: 'GET' }, 9000);
+    const json = await res.json();
+    // Microlink returns data in json.data
+    if ((json.status === 'success' || json.status === 'ok') && json.data) {
+      const d = json.data;
+      const image = (d.image && (d.image.url || d.image)) ? (d.image.url || d.image) : null;
+      const title = d.title || '';
+      const description = d.description || '';
+      return { image, title, description };
+    }
+    // fallback checks
+    if (json.image || json.title) return { image: json.image || null, title: json.title || '', description: json.description || '' };
+    return null;
+  } catch (err) {
+    console.warn('fetchMeta error for', url, err && err.name ? err.name : err);
+    return null;
+  }
+}
+
+function inferCategory(text = '') {
+  const t = (text || '').toLowerCase();
+  if (/phone|mobile|charger|smartphone|earphone|earbuds|bluetooth|keyboard|smartwatch|watch|boat/.test(t)) return 'Electronics';
+  if (/shoe|sneaker|flip|footwear|puma|adidas/.test(t)) return 'Footwear';
+  if (/bag|backpack|trolley|suitcase|travel|organizer|cover/.test(t)) return 'Bags & Travel';
+  if (/kitchen|cookware|dinner|jar|bottle|flask|cookwear/.test(t)) return 'Home & Kitchen';
+  if (/shirt|t-shirt|jeans|kurta|kurti|ethnic|apparel|clothing/.test(t)) return 'Apparel';
+  if (/beauty|skincare|shampoo|lotion|grooming/.test(t)) return 'Beauty';
+  if (/home|sheets|clock|appliance|home deals|appliances/.test(t)) return 'Home & Decor';
+  if (/gym|fitness|massager|gym essentials/.test(t)) return 'Fitness';
+  if (/wallet|belt|earring|earings|accessory/.test(t)) return 'Accessories';
+  if (/daily|essential|essentials/.test(t)) return 'Essentials';
+  return 'Other';
+}
+
+/* ---------- DOM builders ---------- */
+function makeIframeForImage(url) {
+  // Use srcdoc containing an <img> for better compatibility (renders image only)
+  const safe = url ? url.replace(/"/g, '&quot;') : '';
+  if (!safe) return `<style>body{margin:0;background:#081826;display:flex;align-items:center;justify-content:center;color:#9fc8df;font-family:Arial}</style><div style="padding:8px">No preview</div>`;
+  return `<style>body{margin:0;background:#081826;display:flex;align-items:center;justify-content:center}img{max-width:100%;max-height:100%;object-fit:contain}</style><img src="${safe}" alt="preview" />`;
+}
+
+function createCard(item) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.dataset.category = item.category || 'Other';
+  card.dataset.title = (item.title || item.label || '').toLowerCase();
+
+  const wrap = document.createElement('div');
+  wrap.className = 'iframe-wrap';
+  const frame = document.createElement('iframe');
+  frame.setAttribute('loading', 'lazy');
+  frame.style.width = '100%';
+  frame.style.height = '100%';
+  frame.style.border = '0';
+  if (item.image) frame.srcdoc = makeIframeForImage(item.image);
+  else frame.srcdoc = makeIframeForImage('');
+  // clicking the image opens the product in new tab
+  wrap.addEventListener('click', () => window.open(item.url, '_blank', 'noopener'));
+  wrap.appendChild(frame);
+
+  const title = document.createElement('div');
+  title.className = 'title';
+  title.textContent = item.title || item.label || 'Untitled product';
+
+  const desc = document.createElement('div');
+  desc.className = 'desc';
+  desc.textContent = item.note || item.description || '';
+
+  const actions = document.createElement('div');
+  actions.className = 'actions';
+  const explore = document.createElement('a');
+  explore.className = 'btn explore';
+  explore.textContent = 'Explore';
+  explore.href = item.url;
+  explore.target = '_blank'; explore.rel = 'noopener';
+  const buy = document.createElement('a');
+  buy.className = 'btn buy';
+  buy.textContent = 'Buy';
+  buy.href = item.url;
+  buy.target = '_blank'; buy.rel = 'noopener';
+  actions.appendChild(explore); actions.appendChild(buy);
+
+  card.appendChild(wrap);
+  card.appendChild(title);
+  card.appendChild(desc);
+  card.appendChild(actions);
+
+  return card;
+}
+
+function createSlide(item) {
+  const s = document.createElement('div');
+  s.className = 'slide';
+  const iw = document.createElement('div'); iw.className = 'imgwrap';
+  const frame = document.createElement('iframe');
+  frame.style.width = '100%'; frame.style.height = '100%'; frame.style.border = '0';
+  frame.setAttribute('loading', 'lazy');
+  if (item.image) frame.srcdoc = makeIframeForImage(item.image);
+  else frame.srcdoc = makeIframeForImage('');
+  iw.appendChild(frame);
+  s.appendChild(iw);
+  const h = document.createElement('h3'); h.textContent = item.title || item.label; s.appendChild(h);
+  const p = document.createElement('p'); p.textContent = item.note || item.description || ''; s.appendChild(p);
+  s.addEventListener('click', () => window.open(item.url, '_blank', 'noopener'));
+  return s;
+}
+
+/* ---------- Render / UI ---------- */
+function renderCategories() {
+  catContainer.innerHTML = '';
+  const all = document.createElement('div'); all.className = 'cat active'; all.textContent = 'All'; all.dataset.cat = '__all';
+  all.addEventListener('click', () => filterByCategory('__all'));
+  catContainer.appendChild(all);
+  Array.from(categories).sort().forEach(cat => {
+    const el = document.createElement('div');
+    el.className = 'cat';
+    el.textContent = cat;
+    el.dataset.cat = cat;
+    el.addEventListener('click', () => filterByCategory(cat));
+    catContainer.appendChild(el);
+  });
+}
+
+function renderAll() {
+  // grid
+  gridEl.innerHTML = '';
+  sliderEl.innerHTML = '';
+  // slider = first 8
+  products.slice(0,8).forEach(p => sliderEl.appendChild(createSlide(p)));
+  products.forEach(p => gridEl.appendChild(createCard(p)));
+}
+
+function filterByCategory(cat) {
+  document.querySelectorAll('.cat').forEach(c => c.classList.remove('active'));
+  Array.from(document.querySelectorAll('.cat')).find(c => c.dataset.cat === (cat==='__all' ? '__all' : cat)).classList.add('active');
+  if (cat === '__all') {
+    document.querySelectorAll('.grid .card').forEach(c => c.style.display = '');
+  } else {
+    document.querySelectorAll('.grid .card').forEach(c => c.style.display = (c.dataset.category === cat) ? '' : 'none');
+  }
+}
+
+/* ---------- Data ingestion & refresh ---------- */
+async function ingest(list) {
+  // sequential to be polite and avoid rate limits
+  for (const item of list) {
+    // skip duplicate urls
+    if (products.some(p => p.url === item.url)) continue;
+    // show temporary item with label while fetching
+    const placeholder = { label: item.label || item.url, url: item.url, note: item.note || '', category: item.category || 'Other', title: item.label || '', image: null, description: '' };
+    products.push(placeholder);
+    categories.add(placeholder.category);
+    renderCategories();
+    renderAll(); // show incremental
+    const meta = await fetchMeta(item.url);
+    if (meta) {
+      placeholder.title = meta.title || placeholder.label;
+      placeholder.image = meta.image || null;
+      placeholder.description = meta.description || placeholder.note || '';
+      // if category is default 'Other' try to infer from title
+      if ((!item.category || item.category === 'Other') && placeholder.title) {
+        placeholder.category = inferCategory(placeholder.title + ' ' + placeholder.label);
+        categories.add(placeholder.category);
+      }
+    } else {
+      // fallback: infer category from label
+      placeholder.category = placeholder.category || inferCategory(placeholder.label);
+      categories.add(placeholder.category);
+      placeholder.title = placeholder.title || placeholder.label;
+      placeholder.image = null;
+    }
+    renderCategories();
+    renderAll();
+    // small pause (optional) to avoid hitting public rate-limits too fast
+    await new Promise(r => setTimeout(r, 300));
+  }
+}
+
+/* ---------- Refresh all meta (re-fetch) ---------- */
+async function refreshAllMeta() {
+  if (!confirm('Re-fetch metadata for all items? This may take some time.')) return;
+  const copy = products.map(p => ({ label: p.label, url: p.url, note: p.note, category: p.category }));
+  products = []; categories = new Set();
+  renderCategories(); renderAll();
+  await ingest(copy);
+  alert('Refresh complete.');
+}
+
+/* ---------- Autoplay slider ---------- */
+function autoplaySlider() {
+  let dir = 1;
+  setInterval(() => {
+    if (!sliderEl) return;
+    const step = 320;
+    if (sliderEl.scrollLeft + sliderEl.clientWidth >= sliderEl.scrollWidth - 2) dir = -1;
+    if (sliderEl.scrollLeft <= 0) dir = 1;
+    sliderEl.scrollBy({ left: dir * step, behavior: 'smooth' });
+  }, 3500);
+}
+
+/* ---------- Search ---------- */
+document.getElementById('search').addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  document.querySelectorAll('.grid .card').forEach(c => {
+    const t = c.dataset.title || '';
+    const cat = c.dataset.category || '';
+    c.style.display = (q === '' || t.includes(q) || cat.toLowerCase().includes(q)) ? '' : 'none';
+  });
+});
+
+/* ---------- Buttons ---------- */
+document.getElementById('addLinksBtn').addEventListener('click', async () => {
+  const txt = document.getElementById('linksArea').value.trim();
+  if (!txt) return alert('Paste links (one per line) and click Add Links.');
+  const lines = txt.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+  const items = lines.map(u => ({ label: u, url: u, note: '', category: 'Other' }));
+  document.getElementById('linksArea').value = '';
+  await ingest(items);
+});
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  if (confirm('Clear all items?')) {
+    products = []; categories = new Set();
+    renderCategories(); renderAll();
+  }
+});
+
+document.getElementById('filterAllBtn').addEventListener('click', () => filterByCategory('__all'));
+document.getElementById('refreshBtn').addEventListener('click', refreshAllMeta);
+
+/* ---------- Initialize ---------- */
+(async function init() {
+  await ingest(initialList);
+  autoplaySlider();
+})();
+
+</script>
 </body>
 </html>
