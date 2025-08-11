@@ -18,232 +18,218 @@
   <meta property="og:url" content="https://sitetopia.run.place/" />
 
   <!-- Favicon -->
-  <link rel="icon" href="images/Colorful-Abstract-Fox-Free-Logo.png" type="image/png" /><style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f5f5f5;
-    }
-    header {
-        background: #007BFF;
-        color: white;
-        padding: 1rem;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-    .controls {
-        display: flex;
-        gap: 10px;
-        padding: 1rem;
-        background: white;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-    input, select {
-        padding: 8px;
-        font-size: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        flex: 1;
-    }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 15px;
-        padding: 1rem;
-    }
-    .card {
-        background: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        text-align: center;
-        transition: transform 0.2s ease;
-    }
-    .card:hover {
-        transform: scale(1.05);
-    }
-    .card img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-    }
-    .card h3 {
-        margin: 0.5rem 0;
-        font-size: 1rem;
-    }
-    .card p {
-        color: #555;
-        font-size: 0.9rem;
-        padding-bottom: 0.5rem;
-    }
-    /* Loader */
-    #loader {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background: white;
-        font-size: 1.5rem;
-        font-weight: bold;
-        flex-direction: column;
-    }
-    #loader span {
-        font-size: 1.2rem;
-        margin-top: 10px;
-        color: #007BFF;
-    }
-</style>
+  <link rel="icon" href="images/Colorful-Abstract-Fox-Free-Logo.png" type="image/png" /><style>        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: white;
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #0d0d0d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .loader-ring {
+            border: 6px solid #222;
+            border-top: 6px solid #00ffcc;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+
+        /* Fun text */
+        #fun-text {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #00ffcc;
+            margin: 15px 0;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #00ffcc; }
+            to { text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffaa; }
+        }
+
+        /* Search bar */
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        /* Product grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            padding: 15px;
+        }
+        .product-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 0px 15px #00ffcc;
+        }
+        iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+        }
+        .product-info {
+            padding: 10px;
+            text-align: center;
+        }
+        .explore-btn {
+            display: inline-block;
+            background-color: #00ffcc;
+            color: black;
+            padding: 8px 15px;
+            margin-top: 8px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .explore-btn:hover {
+            background-color: #00ffaa;
+        }
+
+        @media (max-width: 500px) {
+            iframe { height: 200px; }
+        }
+    </style>
 </head>
 <body>
 
-<header>Product Showcase</header>
-
 <div id="loader">
-    <div id="loader-text">Loading...</div>
-    <span>Please wait</span>
+    <div class="loader-ring"></div>
 </div>
 
-<div class="controls" style="display:none;">
-    <input type="text" id="search" placeholder="Search products...">
-    <select id="category">
-        <option value="">All Categories</option>
-    </select>
+<h1 style="text-align:center; color:#00ffcc; margin-top:15px;">BHIKHARI Store</h1>
+<div id="fun-text"></div>
+
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search products...">
 </div>
 
-<div class="grid" style="display:none;"></div>
+<div class="product-grid" id="productGrid"></div>
 
 <script>
-const initialList = [
- { label: 'Mobile accessories — from ₹39', url:'https://fktr.in/jIel9gQ', note:'starting from 39', category:'Electronics' },
-  { label: 'Bluetooth speakers — from ₹320', url:'https://fktr.in/SE33sqa', note:'starting from 320', category:'Electronics' },
-  { label: 'Men casual shoes — from ₹199', url:'https://fktr.in/0lflGyH', note:'starting from 199', category:'Footwear' },
-  { label: 'Jars — from ₹258', url:'https://fktr.in/jrANS63', note:'starting from 258', category:'Home & Kitchen' },
-  { label: 'Clocks — from ₹144', url:'https://fktr.in/F0tVy7V', note:'starting from 144', category:'Home & Decor' },
-  { label: 'Backpacks — from ₹399', url:'https://fktr.in/CXaedZw', note:'starting from 399', category:'Bags & Travel' },
-  { label: 'Kitchen cookware — from ₹44', url:'https://fktr.in/f975tBe', note:'starting from 44', category:'Home & Kitchen' },
-  { label: 'Skincare — from ₹22', url:'https://fktr.in/a45j5vr', note:'starting from 22', category:'Beauty' },
-  { label: 'Daily essentials — from ₹99', url:'https://fktr.in/cL1wZp3', note:'starting from 99', category:'Essentials' },
-  { label: 'Water bottles & flasks — from ₹49', url:'https://fktr.in/HkgtnPq', note:'starting from 49', category:'Home & Kitchen' },
-  { label: 'Keyboards — from ₹189', url:'https://fktr.in/s809b7o', note:'starting from 189', category:'Electronics' },
-  { label: 'Dinner sets — from ₹99', url:'https://fktr.in/bkWSzo9', note:'starting from 99', category:'Home & Kitchen' },
-  { label: 'Women flip-flops — from ₹75', url:'https://fktr.in/zIoXEB5', note:'starting from 75', category:'Footwear' },
-  { label: 'Beauty & grooming — from ₹43', url:'https://fktr.in/CNDS5sU', note:'starting from 43', category:'Beauty' },
-  { label: 'Men sport shoes — from ₹40', url:'https://fktr.in/KL9CtnB', note:'starting from 40', category:'Footwear' },
-  { label: 'Waterproof backpack cover — from ₹159', url:'https://fktr.in/Xvu7NOE', note:'starting from 159', category:'Bags & Travel' },
-  { label: 'Travel organizers — from ₹300', url:'https://fktr.in/kol296y', note:'starting from 300', category:'Bags & Travel' },
-  { label: 'Trolley bags — from ₹1114', url:'https://fktr.in/yG30bzH', note:'starting from 1114', category:'Bags & Travel' },
-  { label: 'Cargo pants — from ₹272', url:'https://fktr.in/vjEILqO', note:'starting from 272', category:'Apparel' },
-  { label: 'Luxury smartwatches — from ₹2500', url:'https://fktr.in/pOLAnpk', note:'starting from 2500', category:'Electronics' },
-  { label: 'Head massager — from ₹99', url:'https://fktr.in/mstw1DH', note:'starting from 99', category:'Wellness' },
-  { label: 'Gym essentials — from ₹70', url:'https://fktr.in/cdl8XhR', note:'starting from 70', category:'Fitness' },
-  { label: 'Women footwear — from ₹300', url:'https://fktr.in/7TNBrjb', note:'starting from 300', category:'Footwear' },
-  { label: 'Branded suitcases — from ₹1549', url:'https://fktr.in/rvc98Xg', note:'starting from 1549', category:'Bags & Travel' },
-  { label: 'Earphones — from ₹699', url:'https://fktr.in/BGzWwlW', note:'starting from 699', category:'Electronics' },
-  { label: 'Smartphones — from ₹5000', url:'https://fktr.in/pdy6f0Z', note:'starting from 5000', category:'Electronics' },
-  { label: 'Shampoos — from ₹88', url:'https://fktr.in/qJDqxfh', note:'starting from 88', category:'Beauty' },
-  { label: 'Lotions — from ₹20', url:'https://fktr.in/ZBo53gj', note:'starting from 20', category:'Beauty' },
-  { label: 'Home appliances — from ₹1080', url:'https://fktr.in/rr7ZZme', note:'starting from 1080', category:'Home Appliances' },
-  { label: 'Wallets & belts — from ₹99', url:'https://fktr.in/03aWzx3', note:'starting from 99', category:'Accessories' },
-  { label: 'Men sneakers — from ₹499', url:'https://fktr.in/bNQkp4n', note:'starting from 499', category:'Footwear' },
-  { label: 'Formal shirts — from ₹299', url:'https://fktr.in/1QDzML3', note:'starting from 299', category:'Apparel' },
-  { label: 'Women jeans — from ₹399', url:'https://fktr.in/iqWeuhD', note:'starting from 399', category:'Apparel' },
-  { label: 'Mobile chargers — from ₹79', url:'https://fktr.in/k52WosL', note:'starting from 79', category:'Electronics' },
-  { label: 'Puma & Adidas shoes — from ₹639', url:'https://fktr.in/0EjsyfL', note:'starting from 639', category:'Footwear' },
-  { label: 'boAt smartwatches — from ₹999', url:'https://fktr.in/BvX54kC', note:'starting from 999', category:'Electronics' },
-  { label: 'Home deals — from ₹399', url:'https://fktr.in/nU2sA6F', note:'starting from 399', category:'Home & Kitchen' },
-  { label: 'Double bed sheets — from ₹294', url:'https://ajiio.in/3SgoKc2', note:'starting from 294', category:'Home & Decor' },
-  { label: 'Kurtas & kurtis — from ₹283', url:'https://ajiio.in/xzgM9s5', note:'starting from 283', category:'Apparel' },
-  { label: 'Oversized T-shirts — from ₹175', url:'https://ajiio.in/8ukV93s', note:'starting from 175', category:'Apparel' },
-  { label: 'Ethnic wear — from ₹105', url:'https://ajiio.in/iFimuhX', note:'starting from 105', category:'Apparel' },
-  { label: 'Earrings — from ₹399', url:'https://ajiio.in/o3lB4jm', note:'starting from 399', category:'Accessories' },
-  { label: 'Funky T-shirts — from ₹149', url:'https://ajiio.in/Qh8q1jZ', note:'starting from 149', category:'Apparel' },
-  { label: 'Women western — from ₹399', url:'https://ajiio.in/5O1Yxxt', note:'starting from 399', category:'Apparel' },
-  { label: 'Men ethnic wear — from ₹299', url:'https://ajiio.in/RzBEShg', note:'starting from 299', category:'Apparel' },
-  { label: 'Jeans — from ₹500', url:'https://ajiio.in/TVt78bu', note:'starting from 500', category:'Apparel' },
-  { label: 'Men T-shirts — from ₹100', url:'https://ajiio.in/mFloXWh', note:'starting from 100', category:'Apparel' }
-];
+    // Fun text messages
+    const funMessages = [
+        "💸 Grab deals before they’re gone!",
+        "🔥 Hot picks for today!",
+        "🛒 Best deals, just for you!",
+        "🚀 Shopping made easy & cheap!",
+        "💎 Premium products, low prices!"
+    ];
+    document.getElementById("fun-text").innerText = funMessages[Math.floor(Math.random() * funMessages.length)];
 
-// Loader fun text
-const funTexts = [
-    "Finding the best deals...",
-    "Polishing your products...",
-    "Dusting the shelves...",
-    "Sorting by awesomeness...",
-    "Sharpening the pixels..."
-];
+    // Product data
+    const products = [
+        { name: "Mobile accessories starting from 39", link: "https://fktr.in/jIel9gQ" },
+        { name: "Bluetooth speakers starting from 320", link: "https://fktr.in/SE33sqa" },
+        { name: "Men casual shoes starting from 199", link: "https://fktr.in/0lflGyH" },
+        { name: "Jars starting from 258", link: "https://fktr.in/jrANS63" },
+        { name: "Clocks starting from 144", link: "https://fktr.in/F0tVy7V" },
+        { name: "Backpacks starting from 399", link: "https://fktr.in/CXaedZw" },
+        { name: "Kitchen cookware starting from 44", link: "https://fktr.in/f975tBe" },
+        { name: "Skincare starting at 22", link: "https://fktr.in/a45j5vr" },
+        { name: "Daily essentials at 99", link: "https://fktr.in/cL1wZp3" },
+        { name: "Water bottle and flasks at 49", link: "https://fktr.in/HkgtnPq" },
+        { name: "Keyboards at 189", link: "https://fktr.in/s809b7o" },
+        { name: "Dinner sets starting 99", link: "https://fktr.in/bkWSzo9" },
+        { name: "Women flip-flop at 75", link: "https://fktr.in/zIoXEB5" },
+        { name: "Beauty & grooming products at 43", link: "https://fktr.in/CNDS5sU" },
+        { name: "Men's sport shoes starting from 40", link: "https://fktr.in/KL9CtnB" },
+        { name: "Waterproof backpack cover starting from 159", link: "https://fktr.in/Xvu7NOE" },
+        { name: "Travel organizers starting from 300", link: "https://fktr.in/kol296y" },
+        { name: "Trolley bags starting from 1114", link: "https://fktr.in/yG30bzH" },
+        { name: "Cargos starting from 272", link: "https://fktr.in/vjEILqO" },
+        { name: "Luxury smartwatches starting from 2500", link: "https://fktr.in/pOLAnpk" },
+        { name: "Head massager starting from 99", link: "https://fktr.in/mstw1DH" },
+        { name: "Gym essentials starting from 70", link: "https://fktr.in/cdl8XhR" },
+        { name: "Women footwear starting from 300", link: "https://fktr.in/7TNBrjb" },
+        { name: "Branded suitcases starting from 1549", link: "https://fktr.in/rvc98Xg" },
+        { name: "Earphones starting from 699", link: "https://fktr.in/BGzWwlW" },
+        { name: "Smartphones starting from 5000", link: "https://fktr.in/pdy6f0Z" },
+        { name: "Shampoos starting from 88", link: "https://fktr.in/qJDqxfh" },
+        { name: "Lotions starting 20", link: "https://fktr.in/ZBo53gj" },
+        { name: "Home appliances starting from 1080", link: "https://fktr.in/rr7ZZme" },
+        { name: "Wallets & belts starting from 99", link: "https://fktr.in/03aWzx3" },
+        { name: "Men's sneakers starting from 499", link: "https://fktr.in/bNQkp4n" },
+        { name: "Formal shirts starting from 299", link: "https://fktr.in/1QDzML3" },
+        { name: "Women's jeans starting from 399", link: "https://fktr.in/iqWeuhD" },
+        { name: "Mobile chargers starting from 79", link: "https://fktr.in/k52WosL" },
+        { name: "Puma & Adidas starting from 639", link: "https://fktr.in/0EjsyfL" },
+        { name: "Boat smart watches starting from 999", link: "https://fktr.in/BvX54kC" },
+        { name: "Home deals starting at 399", link: "https://fktr.in/nU2sA6F" },
+        { name: "Double bed sheets starting from 294", link: "https://ajiio.in/3SgoKc2" },
+        { name: "Kurtas & kurtis starting from 283", link: "https://ajiio.in/xzgM9s5" },
+        { name: "Oversized t-shirts starting from 175", link: "https://ajiio.in/8ukV93s" },
+        { name: "Ethnic wear starting from 105", link: "https://ajiio.in/iFimuhX" },
+        { name: "Earrings starting from 399", link: "https://ajiio.in/o3lB4jm" },
+        { name: "Funky t-shirts starting from 149", link: "https://ajiio.in/Qh8q1jZ" },
+        { name: "Women's western starting from 399", link: "https://ajiio.in/5O1Yxxt" },
+        { name: "Men ethnic wear starting from 299", link: "https://ajiio.in/RzBEShg" },
+        { name: "Jeans starting from 500", link: "https://ajiio.in/TVt78bu" },
+        { name: "Men's t-shirts starting from 100", link: "https://ajiio.in/mFloXWh" }
+    ];
 
-let loaderText = document.getElementById("loader-text");
-let textIndex = 0;
-const loaderInterval = setInterval(() => {
-    loaderText.textContent = funTexts[textIndex];
-    textIndex = (textIndex + 1) % funTexts.length;
-}, 800);
+    // Render products
+    const grid = document.getElementById("productGrid");
+    function renderProducts(filter = "") {
+        grid.innerHTML = "";
+        products
+            .filter(p => p.name.toLowerCase().includes(filter.toLowerCase()))
+            .forEach(product => {
+                const card = document.createElement("div");
+                card.className = "product-card";
+                card.innerHTML = `
+                    <iframe src="${product.link}"></iframe>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <a href="${product.link}" target="_blank" class="explore-btn">Explore</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+    }
+    renderProducts();
 
-function nameToImage(label) {
-    return 'images/' + label
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '_')
-        .replace(/^_+|_+$/g, '') + '.jpg';
-}
-
-function displayProducts(list) {
-    const grid = document.querySelector(".grid");
-    grid.innerHTML = "";
-    list.forEach(item => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-            <img src="${nameToImage(item.label)}" alt="${item.label}">
-            <h3>${item.label}</h3>
-            <p>${item.note}</p>
-        `;
-        grid.appendChild(card);
+    // Search functionality
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+        renderProducts(e.target.value);
     });
-}
 
-function populateCategories() {
-    const select = document.getElementById("category");
-    const categories = [...new Set(initialList.map(p => p.category))];
-    categories.forEach(cat => {
-        const opt = document.createElement("option");
-        opt.value = cat;
-        opt.textContent = cat;
-        select.appendChild(opt);
-    });
-}
-
-setTimeout(() => {
-    clearInterval(loaderInterval);
-    document.getElementById("loader").style.display = "none";
-    document.querySelector(".controls").style.display = "flex";
-    document.querySelector(".grid").style.display = "grid";
-    populateCategories();
-    displayProducts(initialList);
-}, 3000);
-
-// Search & Filter
-document.getElementById("search").addEventListener("input", function() {
-    const searchValue = this.value.toLowerCase();
-    const categoryValue = document.getElementById("category").value;
-    const filtered = initialList.filter(item => 
-        item.label.toLowerCase().includes(searchValue) &&
-        (categoryValue === "" || item.category === categoryValue)
-    );
-    displayProducts(filtered);
-});
-
-document.getElementById("category").addEventListener("change", function() {
-    const searchValue = document.getElementById("search").value.toLowerCase();
-    const categoryValue = this.value;
-    const filtered = initialList.filter(item => 
-        item.label.toLowerCase().includes(searchValue) &&
-        (categoryValue === "" || item.category === categoryValue)
-    );
-    displayProducts(filtered);
-});
+    // Loader
+    setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+    }, 3000);
 </script>
 
 </body>
